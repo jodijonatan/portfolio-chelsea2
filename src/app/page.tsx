@@ -333,7 +333,7 @@ export default function Home() {
         {/* Experience Section */}
         <div className="flex w-full items-center justify-center p-4 md:mt-25 mt-5">
           <BlurText
-            text=" My Experience"
+            text="Education"
             delay={150}
             animateBy="words"
             direction="top"
@@ -344,7 +344,7 @@ export default function Home() {
         <ExperienceTimeline />
         <div className="flex w-full items-center justify-center p-4 md:mt-25 mt-5 font-extrabold">
           <BlurText
-            text=" My Projects"
+            text="My Gallerys"
             delay={150}
             animateBy="letters"
             direction="top"
