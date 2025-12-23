@@ -1,15 +1,14 @@
-'use client'; // This layout uses client-side hooks and event listeners
+"use client"; // This layout uses client-side hooks and event listeners
 
 // Include imports for Lenis AND the cursor
-import React, { useEffect, useRef, useState } from 'react';
-import Lenis from '@studio-freight/lenis';
+import React, { useEffect, useRef, useState } from "react";
+import Lenis from "@studio-freight/lenis";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import GooeyNav from "@/blocks/Components/GooeyNav/GooeyNav";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 // Import the Link component from next/link
-import Link from 'next/link';
-
+import Link from "next/link";
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -18,17 +17,23 @@ import { gilroy } from "@/fonts/fonts";
 // Define items for GooeyNav (moved from page.tsx)
 const items = [
   { label: "Home", href: "/" },
-  { label: "Awards", href: "/Hackathons" },
+  // { label: "Awards", href: "/Hackathons" },
   { label: "Contact", href: "/Contact" }, // Adjust as needed
 ];
 
 // Define social media links and placeholder icon paths
 const socialLinks = [
-  { platform: "GitHub", href: "https://github.com/Yuyuhiei", iconPath: "/icons/github_icon.svg" }, // <-- Replace YOUR_GITHUB_LINK and icon path
-  { platform: "LinkedIn", href: "https://www.linkedin.com/in/lauvigne-lumeda/", iconPath: "/icons/linkedin_icon.svg" }, // <-- Replace YOUR_LINKEDIN_LINK and icon path
-  { platform: "Gmail", href: "mailto:lumedalauvigne@gmail.com", iconPath: "/icons/gmail_icon.svg" }, // <-- Replace YOUR_EMAIL_ADDRESS and icon path
+  {
+    platform: "GitHub",
+    href: "https://github.com/babynachelsea032-jp",
+    iconPath: "/icons/github_icon.svg",
+  }, // <-- Replace YOUR_GITHUB_LINK and icon path
+  {
+    platform: "Gmail",
+    href: "mailto:babynachelsea032@gmail.com",
+    iconPath: "/icons/gmail_icon.svg",
+  }, // <-- Replace YOUR_EMAIL_ADDRESS and icon path
 ];
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,7 +58,6 @@ const geistMono = Geist_Mono({
   };
 */
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -65,7 +69,7 @@ export default function RootLayout({
   const pathname = usePathname();
 
   // Calculate active index based on pathname
-  const activeIndex = items.findIndex(item => item.href === pathname);
+  const activeIndex = items.findIndex((item) => item.href === pathname);
 
   // --- Lenis Smooth Scrolling Implementation ---
   // Use useRef to hold the Lenis instance
@@ -73,7 +77,7 @@ export default function RootLayout({
 
   useEffect(() => {
     // Initialize Lenis only in the browser environment
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       lenis.current = new Lenis({
         duration: 1.2, // Adjust the duration for scroll speed (seconds)
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function (default lenis easing)
@@ -100,7 +104,6 @@ export default function RootLayout({
     }
   }, []); // Empty dependency array ensures this effect runs only once on mount and cleans up on unmount
   // --- End Lenis Implementation ---
-
 
   // --- Custom Cursor Implementation (Moved from page.tsx) ---
   // Use MotionValues to track the raw mouse position
@@ -132,67 +135,65 @@ export default function RootLayout({
     // This runs only on the client after hydration
     // setTimeout is optional, but can help ensure initial positioning after paint
     setTimeout(() => {
-        cursorX.set(window.innerWidth / 2);
-        cursorY.set(window.innerHeight / 2);
+      cursorX.set(window.innerWidth / 2);
+      cursorY.set(window.innerHeight / 2);
     }, 0);
 
-
     // Add event listener for subsequent mouse movements
-    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener("mousemove", moveCursor);
 
     // Clean up event listener on component unmount
     return () => {
-      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener("mousemove", moveCursor);
     };
   }, [cursorX, cursorY]); // Dependencies: update effect if motion values change (they won't here, but good practice)
   // --- End Custom Cursor Implementation ---
-
 
   return (
     <html lang="en">
       <body
         // Added bg-black class for black background
         className={`${geistSans.variable} ${geistMono.variable} ${gilroy.variable} antialiased font-gilroy bg-black`}
-        style={{ cursor: 'none' }} // Apply cursor: none globally to the body
-        >
+        style={{ cursor: "none" }} // Apply cursor: none globally to the body
+      >
         {/* Custom Cursor Dot */}
-        <motion.div 
-            style={{
+        <motion.div
+          style={{
             x: dotX, // Bind x position to the dot's sprung motion value
             y: dotY, // Bind y position to the dot's sprung motion value
-            pointerEvents: 'none', // Ensure the cursor doesn't block clicks on elements below it
+            pointerEvents: "none", // Ensure the cursor doesn't block clicks on elements below it
             left: 0, // Position relative to the viewport
             top: 0,
-            position: 'fixed', // Stay in fixed position relative to the viewport
+            position: "fixed", // Stay in fixed position relative to the viewport
             zIndex: 9999, // Ensure it's always on top
-            transform: 'translate(-50%, -50%)', // Center the div exactly on the cursor coordinates
-            width: '8px', // Size of the inner dot
-            height: '8px',
-            borderRadius: '50%', // Make it round
-            backgroundColor: '#06b6d4', // Cyan color (Tailwind cyan-500 equivalent)
-            boxShadow: '0 0 10px 4px rgba(6, 182, 212, 0.7)', // Glowing effect
-            }}
-            className="hidden md:block" // Hide on mobile (optional, can be removed if you want it on mobile too)
+            transform: "translate(-50%, -50%)", // Center the div exactly on the cursor coordinates
+            width: "8px", // Size of the inner dot
+            height: "8px",
+            borderRadius: "50%", // Make it round
+            backgroundColor: "#06b6d4", // Cyan color (Tailwind cyan-500 equivalent)
+            boxShadow: "0 0 10px 4px rgba(6, 182, 212, 0.7)", // Glowing effect
+          }}
+          className="hidden md:block" // Hide on mobile (optional, can be removed if you want it on mobile too)
         />
         {/* Custom Cursor Outline */}
         <motion.div
-            style={{
+          style={{
             x: outlineX, // Bind x position to the outline's sprung motion value
             y: outlineY, // Bind y position to the outline's sprung motion value
-            pointerEvents: 'none', // Ensure the cursor doesn't block clicks
+            pointerEvents: "none", // Ensure the cursor doesn't block clicks
             left: 0, // Position relative to the viewport
             top: 0,
-            position: 'fixed', // Stay in fixed position
+            position: "fixed", // Stay in fixed position
             zIndex: 9998, // Z-index slightly lower than the dot
-            transform: 'translate(-50%, -50%)', // Center the div
-            width: '30px', // Size of the outer circle
-            height: '30px',
-            borderRadius: '50%', // Make it round
-            border: '2px solid #0891b2', // Border color (Tailwind cyan-600 equivalent)
+            transform: "translate(-50%, -50%)", // Center the div
+            width: "30px", // Size of the outer circle
+            height: "30px",
+            borderRadius: "50%", // Make it round
+            border: "2px solid #0891b2", // Border color (Tailwind cyan-600 equivalent)
             // Optional: opacity for transparency
             opacity: 0.5,
-            }}
-            className="hidden md:block" // Hide on mobile (optional, can be removed if you want it on mobile too)
+          }}
+          className="hidden md:block" // Hide on mobile (optional, can be removed if you want it on mobile too)
         />
         {/* Header Section */}
         {/* Adjusted padding for different screen sizes */}
@@ -200,22 +201,24 @@ export default function RootLayout({
           {/* Logo */}
           {/* Using Link for Logo if it navigates to home */}
           {/* Adjusted margin for different screen sizes */}
-            <Link href="/" passHref>
-             <Image
-                src="/logo/lauv-logo2.svg"
-                alt="Lauv Logo"
-                width={35} // Base size for logo
-                height={35} // Base size for logo
-                // Added responsive sizing for the logo image itself if needed (optional, depends on design)
-                // className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 m-4 md:m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125"
-                className="m-4 md:m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125" // Adjusted margin
-             />
-            </Link>
-
+          <Link href="/" passHref>
+            <Image
+              src="/logo/babyna.png"
+              alt="Lauv Logo"
+              width={35} // Base size for logo
+              height={35} // Base size for logo
+              // Added responsive sizing for the logo image itself if needed (optional, depends on design)
+              // className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 m-4 md:m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125"
+              className="m-4 md:m-10 transition-all duration-300 hover:scale-150 hover:rotate-10 hover:brightness-125" // Adjusted margin
+            />
+          </Link>
 
           {/* Desktop Navigation - hidden on small screens */}
           {/* Container with fixed dimensions - GooeyNav should handle internal responsiveness */}
-          <div className="hidden md:block font-medium" style={{ height: '70px', width: '400px', position: 'relative' }}>
+          <div
+            className="hidden md:block font-medium"
+            style={{ height: "70px", width: "400px", position: "relative" }}
+          >
             <GooeyNav
               items={items} // The items array contains { label, href }
               particleCount={15}
@@ -242,14 +245,15 @@ export default function RootLayout({
             <div className="w-6 h-0.5 bg-white transition-all duration-300 ease-in-out"></div>
           </button>
         </header>
-
         {/* Mobile menu - only visible when mobileMenuOpen is true */}
         {/* Positioned fixed below the header, covers full width on mobile */}
         {mobileMenuOpen && (
           // Changed position from absolute to fixed
           // Adjusted top position to match header height at different breakpoints
           // Added overflow-y-auto to allow scrolling if the menu content is taller than the viewport
-          <div className="md:hidden bg-transparent backdrop-blur-[10px] pt-10 fixed top-[72px] sm:top-[80px] md:top-[96px] right-0 left-0 z-40 p-4 sm:p-5 overflow-y-auto h-[calc(100vh - 72px)] sm:h-[calc(100vh - 80px)] md:h-[calc(100vh - 96px)]"> {/* Adjusted top position, added overflow-y-auto and height */}
+          <div className="md:hidden bg-transparent backdrop-blur-[10px] pt-10 fixed top-[72px] sm:top-[80px] md:top-[96px] right-0 left-0 z-40 p-4 sm:p-5 overflow-y-auto h-[calc(100vh - 72px)] sm:h-[calc(100vh - 80px)] md:h-[calc(100vh - 96px)]">
+            {" "}
+            {/* Adjusted top position, added overflow-y-auto and height */}
             <nav className="flex flex-col space-y-4">
               {items.map((item, index) => (
                 // Using <Link> for navigation items
@@ -267,9 +271,8 @@ export default function RootLayout({
           </div>
         )}
         {/* End Header Section */}
-
-        {children} {/* This is where your page content (like page.tsx) will be rendered */}
-
+        {children}{" "}
+        {/* This is where your page content (like page.tsx) will be rendered */}
         {/* Sticky Social Media Container */}
         {/* Positioned fixed to the bottom right */}
         {/* Added responsive padding, rounded corners, border, and background */}
@@ -297,7 +300,6 @@ export default function RootLayout({
           ))}
         </div>
         {/* End Sticky Social Media Container */}
-
       </body>
     </html>
   );

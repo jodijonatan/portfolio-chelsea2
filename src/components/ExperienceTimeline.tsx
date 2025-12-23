@@ -15,7 +15,7 @@ const experiences = [
     year: "2012 - 2013",
     description:
       "Aku memulai perjalanan pendidikanku dari PAUD di Komino, tempat pertama aku belajar mengenal dunia dan teman-teman baru.",
-    logo: "/exp_logos/datacom.svg",
+    logo: "/exp_logos/paud.svg",
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const experiences = [
     year: "2014 - 2015",
     description:
       "Setelah itu, aku melanjutkan sekolah di TK Bimba AIUEO, tempat aku belajar membaca, menulis, dan berhitung dengan cara yang menyenangkan.",
-    logo: "/exp_logos/sbc.svg",
+    logo: "/exp_logos/TK.svg",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const experiences = [
     year: "2015 - 2021",
     description:
       "Kemudian, aku bersekolah di SD Negeri, tempat aku mulai mengenal berbagai pelajaran dasar dan belajar untuk lebih mandiri.",
-    logo: "/exp_logos/plmce.svg",
+    logo: "/exp_logos/SD.svg",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const experiences = [
     year: "2021 - 2024",
     description:
       "Selanjutnya, aku menempuh pendidikan di SMP Negeri 1 Payung, di mana aku mulai mengembangkan minat dan semangat belajar yang lebih luas.",
-    logo: "/exp_logos/gdscplm.svg",
+    logo: "/exp_logos/SMP.svg",
   },
   {
     id: 5,
@@ -51,7 +51,7 @@ const experiences = [
     year: "2024 - Present",
     description:
       "Sekarang, aku bersekolah di SMK Telkom 1 Medan, tempat aku mendalami dunia teknologi dan pengembangan perangkat lunak.",
-    logo: "/exp_logos/notion.svg",
+    logo: "/exp_logos/telkom.svg",
   },
 ];
 

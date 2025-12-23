@@ -15,7 +15,7 @@ import CircularText from "@/blocks/TextAnimations/CircularText/CircularText";
 // import ScrollReveal from "@/blocks/TextAnimations/ScrollReveal/ScrollReveal";
 import TiltedCard from "@/blocks/Components/TiltedCard/TiltedCard";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
-import SkillTag from "@/components/SkillTag"; // Assuming SkillTag is in components folder
+// import SkillTag from "@/components/SkillTag"; // Assuming SkillTag is in components folder
 import ProjectCard from "@/components/ProjectCard"; // Import the new ProjectCard component
 
 // data/projects.ts
@@ -24,77 +24,44 @@ const projects = [
   {
     id: 1,
     number: "01",
-    title: "Haliya: The AI Fortune Teller",
-    description: "Web Developer",
-    techstack: [
-      // <-- Add paths to tech stack icons for Procrash
-      "/techstack/react.svg",
-      "/techstack/css.svg",
-      "/techstack/rasa.svg",
-      "/techstack/openai.svg",
-      "/techstack/python.svg",
-    ],
-    imageSrc: "/proj/projectOne.png",
-    link: "https://github.com/Yuyuhiei/Haliya-The-AI-Fortune-Teller",
+    title: "Quiet Moment",
+    description: "Casual Self Portrait",
+    imageSrc: "/gallery/1766486247778.jpg",
   },
   {
     id: 2,
     number: "02",
-    title: "GDSC PLM Website",
-    description: "Web Developer",
-    techstack: [
-      "/techstack/nextjs.svg",
-      "/techstack/tailwind.svg",
-      "/techstack/shadcn.svg",
-    ],
-    imageSrc: "/proj/projectTwo.png",
-    link: "https://www.gdsc-plm.org/",
+    title: "Everyday Frame",
+    description: "Daily Life Capture",
+    imageSrc: "/gallery/1766486247753.jpg",
   },
   {
     id: 3,
     number: "03",
-    title: "GrievDesk",
-    description: "Full Stack Developer",
-    techstack: [
-      "/techstack/react.svg",
-      "/techstack/css.svg",
-      "/techstack/springboot.svg",
-    ],
-    imageSrc: "/proj/projectThree.png",
-    link: "https://plmce-grievdesk.web.app/",
+    title: "Soft Expression",
+    description: "Natural Selfie",
+    imageSrc: "/gallery/1766486247802.jpg",
   },
   {
     id: 4,
     number: "04",
-    title: "Conso Programming Language and Compiler",
-    description: "Full Stack Developer",
-    techstack: [
-      "/techstack/react.svg",
-      "/techstack/css.svg",
-      "/techstack/python.svg",
-      "/techstack/fastapi.svg",
-      "/techstack/websockets.svg",
-    ],
-    imageSrc: "/proj/projectFour.png",
-    link: "https://conso-frontend-v2.onrender.com/",
+    title: "Late Afternoon",
+    description: "Personal Moment",
+    imageSrc: "/gallery/1766486248013.jpg",
   },
   {
     id: 5,
     number: "05",
-    title: "AceFrame",
-    description: "Web Developer",
-    techstack: ["/techstack/nextjs.svg", "/techstack/tailwind.svg"],
-    imageSrc: "/proj/projectFive.png",
-    link: "https://aceframe.web.app/",
+    title: "Calm Presence",
+    description: "Minimal Portrait",
+    imageSrc: "/gallery/1766486247863.jpg",
   },
   {
     id: 6,
     number: "06",
-    title: "PLM Enrolment System",
-    description: "Database Administrator and Developer",
-    techstack: ["/techstack/java.svg", "/techstack/apachederby.svg"],
-    imageSrc: "/proj/projectSix.png",
-    link: "https://github.com/Yuyuhiei/PLM-Regulars-Enrolment-System",
+    title: "Simple Frame",
+    description: "Everyday Selfie",
+    imageSrc: "/gallery/1766486247944.jpg",
   },
 ];
 
@@ -105,28 +72,28 @@ const handleAnimationComplete = () => {
 };
 
 // Define your skill arrays (you could also move these to a data file if they get long)
-const devSkills = [
-  "Next.js",
-  "Tailwind",
-  "React",
-  "Javascript",
-  "CSS",
-  "Node.js",
-  "Python",
-  "Springboot",
-  "Flutterflow",
-  "Firebase",
-  "Supabase",
-  "MySQL",
-];
+// const devSkills = [
+//   "Next.js",
+//   "Tailwind",
+//   "React",
+//   "Javascript",
+//   "CSS",
+//   "Node.js",
+//   "Python",
+//   "Springboot",
+//   "Flutterflow",
+//   "Firebase",
+//   "Supabase",
+//   "MySQL",
+// ];
 
-const contentSkills = [
-  "Figma",
-  "Canva",
-  "Capcut",
-  "Adobe Premiere Pro",
-  "Adobe Illustrator",
-];
+// const contentSkills = [
+//   "Figma",
+//   "Canva",
+//   "Capcut",
+//   "Adobe Premiere Pro",
+//   "Adobe Illustrator",
+// ];
 
 export default function Home() {
   // Removed mobileMenuOpen state
@@ -218,7 +185,7 @@ export default function Home() {
             className="absolute left-45 bottom-10"
           />
           <Image
-            src="/logo/lauv-logo.svg"
+            src="/logo/babyna.png"
             alt="Lauv Logo"
             width={20}
             height={20}
@@ -226,58 +193,10 @@ export default function Home() {
           />
         </div>
         <div className="flex-grow flex flex-col md:flex-row items-center justify-center w-full md:w-9xl md:mt-35 mt-10 md:space-x-50 space-x-0">
-          {/* Tech Stack Section Start */}
-          <div className="flex flex-col w-full max-w-lg px-4 md:px-0 mt-10 mb-20 space-y-8">
-            {/* DEVELOP Card */}
-            {/* custom-corner-border class is kept from previous step */}
-            {/* hover:scale-105 on the card wrapper is kept */}
-            <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 custom-corner-border">
-              <h3 className="text-white font-bold md:text-2xl text-lg tracking-wide mb-3">
-                DEVELOP
-              </h3>
-              <p className="text-gray-400 md:text-md text-sm mt-2 leading-relaxed mb-5">
-                Started creating mobile applications using Flutter, FlutterFlow,
-                and Firebase and eventually switched to Web Development using
-                NextJS, React, and Tailwind
-              </p>
-              <h4 className="text-cyan-300 font-semibold mb-3 text-base">
-                Skillset &amp; tools
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {devSkills.map((skill) => (
-                  <SkillTag key={skill} skillName={skill} />
-                ))}
-              </div>
-            </div>
-
-            {/* CONTENTS Card */}
-            {/* custom-corner-border class is kept from previous step */}
-            {/* hover:scale-105 on the card wrapper is kept */}
-            <div className="relative p-6 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 custom-corner-border">
-              <h3 className="text-white font-bold md:text-2xl text:lg tracking-wide mb-3">
-                CREATE {/* Updated title based on your code */}
-              </h3>
-              <p className="text-gray-400 md:text-md text-sm mt-2 leading-relaxed mb-5">
-                My content creation journey evolved from a side hustle to
-                serving other creators, achieving an average reach of 15 million
-                within 90 days. {/* Updated description */}
-              </p>
-              <h4 className="text-cyan-300 font-semibold mb-3 text-base">
-                Skillset &amp; Tools
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {contentSkills.map((skill) => (
-                  <SkillTag key={skill} skillName={skill} />
-                ))}
-              </div>
-            </div>
-          </div>
-          {/* Tech Stack Section End */}
-
           {/* What I do Section */}
           <div className="flex flex-col">
             <BlurText
-              text="What I do"
+              text="About Me"
               delay={150}
               animateBy="words"
               direction="top"
